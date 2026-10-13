@@ -30,6 +30,7 @@ public class GridManager : MonoBehaviour
 
     public void GenerateGrid(LevelSO level)
     {
+        //clear the grid if any before creating another grid
         ClearGrid();
 
         levelData = level;
@@ -71,13 +72,43 @@ public class GridManager : MonoBehaviour
         grid = null;
 
         if (gridParent == null)
+        {
             return;
+        }
 
-        for (int i = gridParent.childCount - 1; i >= 0; i--)
+        for (int i = gridParent.childCount - 1; i >= 0; i++)
         {
             Destroy(gridParent.GetChild(i).gameObject);
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // private void ClearGrid()
+    // {
+    //     grid = null;
+
+    //     if (gridParent == null)
+    //         return;
+
+    //     for (int i = gridParent.childCount - 1; i >= 0; i--)
+    //     {
+    //         Destroy(gridParent.GetChild(i).gameObject);
+    //     }
+    // }
     private void ApplyLevelData(LevelSO level)
     {
         foreach (var item in level.numberedCells)
